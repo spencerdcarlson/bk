@@ -1,0 +1,11 @@
+<% unless current_user.activities.include?(activity) %>
+	<section class='activity-option' data-activity='<%= activity.id %>'>
+		<span class='optional-activity-name on-click lead'><%= activity.name %></span>
+		<%= form_for Interest.new, remote: true, html: { class: 'new_interest inline' } do |f| %>
+		<% options = Array.new; Activity.all.each do |o|; options << o.id end %>
+		<%= select_tag(:activity_id, options_for_select((options),activity.id), class: 'hide')%>
+			<%= select_tag(:user_rating, options_for_select((0..10)), data: { activity_id: activity.id }, class: 'input-mini' ) %>
+			<%= f.submit %>
+		<% end %>
+	</section>
+<% end %>

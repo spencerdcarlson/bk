@@ -1,0 +1,9 @@
+<h1>Activities</h1>
+<% @activities.each do |a| %>
+<%= a.name %>
+<%= link_to "Delete", a, method: :delete, data: {confirm: 'Are you sure?'} %>
+<br>
+<% end %>
+<br>
+<h3>New Activity</h3>
+<%= render 'form' %>

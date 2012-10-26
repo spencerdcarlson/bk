@@ -1,0 +1,28 @@
+<h1>Add Interest</h1>
+<%= form_for(@interest) do |f| %>
+  <% if @interest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@interest.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+      <% @interest.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+	<%= link_to "Back", new_user_interest_path(@user) %>
+  <% else %>
+  <div class="field">
+    <%= f.label :activity_id %><br>
+	<% activities_array = @activities.map { |activity| [activity.name, activity.id] } %>
+    <%= select_tag(:activity_id, options_for_select(activities_array)) %>
+  </div>
+  <div class="field">
+	  <%= f.label :user_rating %><br>
+	  <%= select_tag(:user_rating, options_for_select((1..10).to_a)) %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class => 'btn'  %>
+  </div>  
+<% end
+end %>
+

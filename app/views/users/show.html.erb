@@ -1,0 +1,18 @@
+<% title 'ⱭB => Home', false %>
+<section id='user-zip-code'>
+	<%= render 'zip_code'%>
+</section>
+
+<section id='current-user-activties' class='clear-left'>
+	<%= render partial: 'user_activities', collection: @user.interests, as: :interest %>
+</section>
+<span id='add-activity-btn' class='on-click-once btn-link'>+</span>
+<section id='add-activity' class='hide'>
+	<em><p>Rate the activity you want to add.</p></em>
+	<section id='activity-options'>
+		<%= render partial: 'edit_activities', collection: @activities, as: :activity %>
+	</section>
+</section>
+
+
+

@@ -1,0 +1,22 @@
+<% a = Activity.where(:id => interest.activity_id).first %>
+
+<section class='current-user-activity' data-activity-id='<%= a.id %>' data-interest-id='<%= interest.id %>'>
+	<section class='float-left'>
+		<span class='on-click current-activity-name lead' data-activity-id='<%= a.id %>'><%= a.name %></span>
+		<!--<span class='current-activity-user-rating' data-activity-id='<%= a.id %>'><%= interest.user_rating %></span> -->
+	</section>
+	<section class='float-left height-mini'>
+		<%= form_for interest, remote: true, html: { class: 'edit_interest' } do |f| %>
+			<%= select_tag(:user_rating, options_for_select((1..10), interest.user_rating), 
+				data: { activity_id: a.id }, class: 'current-user-rating-options hide input-mini' ) %>
+			<%= f.submit %>
+	<% end %>
+	</section>
+	<section class='float-left height-mini'>
+		<%= button_to 'remove', interest, method: 'delete', remote: true, 
+			class: 'delete-current-activity btn-link hide', form_class: 'button_to',
+			data: { activity_id: a.id, confirm: "Remove #{a.name}?", confirm_title: 'Remove'}  %>
+	</section>
+	<section style='clear: both'>
+	</section>
+</section>

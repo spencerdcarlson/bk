@@ -1,0 +1,6 @@
+$('#current-user-activties').html("<%= j render partial: 'users/user_activities', collection: current_user.interests, as: :interest %>")
+$("#activity-options").html("<%= j render partial: 'users/edit_activities', collection: Activity.all, as: :activity %>")
+$('.edit_interest').editInterest()
+$('.new_interest').editInterest()
+$('.on-click').addOnClickActivities()
+$('#flash').html("<%= j raw(flash_display) %>");

@@ -1,0 +1,5 @@
+$('#zip-code').toggle()
+$('.edit_user').toggle()
+$('#user-zip-code').html("<%= j render partial: 'zip_code' %>")
+$('.zip-code').addOnClickZipCode()
+$('#flash').html("<%= j raw(flash_display) %>");

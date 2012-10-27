@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_filter :authorize
+  
   
   def index
     @activities = Activity.all

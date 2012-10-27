@@ -1,4 +1,4 @@
-<p class='lead float-left'><strong>Zip:</strong> <span id='zip-code' class='zip-code'><%= current_user.zip_code %></span></p>
+<p class='lead float-left'><strong>Zip:</strong> <span id='zip-code' class='zip-code'><%= current_user.zip_code if current_user.zip_code %></span></p>
 <section id='update-zip-code'>
 	<section class='update-zip-code-form hide'>
 		<%= form_for @user, remote: true do |f| %>

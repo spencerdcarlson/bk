@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authorize, except: ['new','create']
+ 
   
   def new
     @user = User.new
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      session[:user_id] = @user.id
+      cookies[:auth_token] = @user.auth_token
       redirect_to home_path, :notice => 'Thanks for registering'
     else
       render "new"
@@ -17,7 +17,6 @@ class UsersController < ApplicationController
   
   def show
     @user = current_user
-    @user_interests = Interest.where(user_id: current_user.id)
     @activities = Activity.all
     @interest = Interest.new
   end

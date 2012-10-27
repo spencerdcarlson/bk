@@ -1,5 +1,5 @@
 class InterestsController < ApplicationController
-  before_filter :authorize
+  
   
   def new
     @activities = Activity.all

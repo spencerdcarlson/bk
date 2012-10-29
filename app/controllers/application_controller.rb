@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :authorize
   
+  delegate :allow?, to: :current_permission
+  helper_method :allow?
   helper_method :current_user
   
 private 
@@ -19,10 +21,6 @@ private
       session[:protected_page] = request.fullpath
       redirect_to login_url, :alert => 'Not Authorized'
     end
-    # unless current_user
-    #       session[:protected_page] = request.fullpath
-    #       redirect_to login_url, :alert => "Not Logedin"
-    #     end
   end
   
 end

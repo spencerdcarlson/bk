@@ -40,6 +40,10 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
   
+  config.filter_run focus: true
+  config.run_all_when_everything_filtered = true
+  
+  
   # Mailer specs
   config.include MailerMacros
   config.before(:each) { reset_email }

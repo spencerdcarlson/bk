@@ -10,11 +10,5 @@ FactoryGirl.define do
     is_admin false
   end
   
-  factory :user_admin do
-    email FactoryGirl.generate :email
-    password 'secret'
-    zip_code 85203
-    is_admin false
-  end
-  
+
 end

@@ -39,15 +39,15 @@ Bk::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: CONFIG[:SMTP_ADDRESS],
     port: 587,
-    domain: "railscasts.com",
-    authentication: "plain",
+    domain: CONFIG[:SMTP_DOMAIN],
+    authentication: CONFIG[:SMTP_AUTH],
     enable_starttls_auto: true,
-    user_name: ENV['GMAIL_USERNAME'],
-    password: ENV["GMAIL_PASSWORD"]
+    user_name: CONFIG[:SMTP_USERNAME],
+    password: CONFIG[:SMTP_PASSWORD]
   }
   
-  config.action_mailer.default_url_options = { :host => 'bk.dev/' }
+  config.action_mailer.default_url_options = { host: CONFIG[:MAILER_HOST]  }
   
 end

@@ -19,6 +19,8 @@ class InterestsController < ApplicationController
     
   end
   
+
+  
   def update
     @interest = current_resource
     @interest.user_rating = params[:user_rating]

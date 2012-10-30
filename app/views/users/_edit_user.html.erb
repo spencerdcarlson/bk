@@ -1,11 +1,11 @@
 <section class='edit-user-form'>
 <%= form_for user, html: {class: 'form-inline edit_user'} do |f| %>
 	<%= f.label :email %>
-	<%= f.text_field :email %>
-	<%= f.label :zip_code %>
-	<%= f.text_field :zip_code %>
+	<%= f.text_field :email, class: 'input-large' %>
+	<%= f.label :zip_code, 'Zip' %>
+	<%= f.text_field :zip_code, class: 'input-mini' %>
 	<% if allow_attr? :user, :is_admin %>
-	<%= f.label :is_admin %>
+	<%= f.label :is_admin, 'Admin:' %>
 	<%= f.check_box :is_admin %>
 	<% end %>
 	<%= f.submit 'Update', class: 'btn' %>

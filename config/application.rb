@@ -9,6 +9,12 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+# Load External Secrets
+CONFIG = YAML.load(File.read(File.expand_path('../env.yml',__FILE__)))
+CONFIG.merge! CONFIG.fetch( Rails.env, {} )
+CONFIG.symbolize_keys!
+
+
 module Bk
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

@@ -29,7 +29,7 @@ Bk::Application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
   # Mailer url
-  config.action_mailer.default_url_options = { :host => 'bk.dev/' }
+  config.action_mailer.default_url_options = { host: CONFIG[:MAILER_HOST] }
 
   # Raise exception on mass assignment protection for Active Record models
   config.active_record.mass_assignment_sanitizer = :strict

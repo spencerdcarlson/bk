@@ -1,30 +1,32 @@
 require 'spec_helper'
 
-RSpec::Matchers.define :allow do |*args|
+RSpec::Matchers.define :allow do |controller, actions, resource|
   match do |permission|
-    permission.allow?(*args).should be_true
+    Array(actions).each do |action|
+      permission.allow?(controller,action,resource).should be_true
+    end
+  end
+end
+RSpec::Matchers.define :allow_attr do |model,atributes|
+  match do |permission|
+    Array(atributes).each do |atribute|
+      permission.allow_attr?(model,atribute).should be_true
+    end
   end
 end
 
-RSpec::Matchers.define :allow_attr do |*args|
-  match do |permission|
-    permission.allow_attr?(*args).should be_true
-  end
-end
-
-describe Permission, focus: true do
+describe Permissions, focus: true do
   describe "as guest" do
-    subject { Permission.new(nil) }
-    it { should allow("sessions","new") }
-    it { should allow("users", "new") }
-    it { should allow('users', 'create') }
-    it { should allow('password_resets', 'new') }
-    it { should allow('password_resets', 'create') }
-    it { should allow('password_resets', 'edit') }
-    it { should allow('password_resets', 'update') }
-    it { should_not allow('users', 'show') }
-    it { should_not allow('users', 'edit') }
-    it { should_not allow('activities', "index") }
+    subject { Permissions.permission_for(nil) }
+    it "has correct privliges for a guest" do
+      # Controller Actions
+      should allow(:sessions,         [:new,:create,:destroy] )
+      should allow(:password_resets,  [:new, :create, :edit, :update] )
+      should allow(:users,            [:create,:new])
+      should_not allow(:users,        [:index,:show,:edit,:update,:destroy] )
+      should_not allow(:activities,   [:index,:new,:create,:show,:edit,:update,:destroy])
+      should_not allow(:interests,    [:index,:new,:create,:show,:edit,:update,:destroy])
+    end
   end
   
   describe "as normal user" do
@@ -32,35 +34,33 @@ describe Permission, focus: true do
     let(:activity){ FactoryGirl.create(:activity) }
     let(:interest){ FactoryGirl.build(:interest, user_id: user.id, activity_id: activity.id ) }
     let(:other_interest){ FactoryGirl.build(:interest, activity_id: activity.id ) }
-    subject { Permission.new(user)}
-    it { should allow("sessions","new") }
-    it { should allow("users", "new") }
-    it { should allow('users', 'create') }
-    it { should allow('password_resets', 'new') }
-    it { should allow('password_resets', 'create') }
-    it { should allow('password_resets', 'edit') }
-    it { should allow('password_resets', 'update') }
-    it { should allow('interests','edit', interest )}
-    it { should_not allow('interests','edit', other_interest )}
-    it { should allow('users', 'show') }
-    it { should allow('users', 'edit') }
-    it { should_not allow_attr("users","is_admin")}
-    it { should_not allow('activities', "index") }
+    subject { Permissions.permission_for(user) }
+    it "has correct privilges for a normal user" do
+      # Controller Actions
+      should allow(:sessions,         :new)
+      should allow(:password_resets,  [:new,:create,:edit,:update] )
+      should allow(:users,            [:new,:create,:show])
+      should allow(:interests,        [:new,:create] )
+      should_not allow(:activities,   [:index,:new,:create,:show,:edit,:update,:destroy])
+      # Controller Actions Resource
+      should allow(:users,            [:edit,:update,:destroy], user)
+      should allow(:interests,        [:edit,:update,:destroy], interest )
+      should_not allow(:interests,    [:edit,:update,:destroy], other_interest )
+      # Model Attributes
+      should_not allow_attr(:users,   :is_admin)
+    end
   end
-    
-      
+       
   describe "as admin" do
-    subject { Permission.new(FactoryGirl.build(:user, is_admin: true ))}
-    it { should allow("sessions","new") }
-    it { should allow("users", "new") }
-    it { should allow('users', 'create') }
-    it { should allow('password_resets', 'new') }
-    it { should allow('password_resets', 'create') }
-    it { should allow('password_resets', 'edit') }
-    it { should allow('password_resets', 'update') }
-    it { should allow('users', 'show') }
-    it { should allow('users', 'edit') }
-    it { should allow('activities', "index") }
+    subject { Permissions.permission_for(FactoryGirl.build(:user, is_admin: true ))}
+    it "has correct privileges for an admin" do
+      # Controller Actions
+      should allow(:sessions,         [:index,:new,:create,:show,:edit,:update,:destroy])
+      should allow(:users,            [:index,:new,:create,:show,:edit,:update,:destroy])
+      should allow(:password_resets,  [:index,:new,:create,:show,:edit,:update,:destroy])
+      should allow(:activities,       [:index,:new,:create,:show,:edit,:update,:destroy])
+      should allow(:interests,        [:index,:new,:create,:show,:edit,:update,:destroy])
+    end
   end
   
 end

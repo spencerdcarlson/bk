@@ -20,7 +20,7 @@ class InterestsController < ApplicationController
   end
   
   def update
-    @interest = Interest.find(params[:id])
+    @interest = current_resource
     @interest.user_rating = params[:user_rating]
     @interest.save
     @activity = (Activity.where(id: @interest.activity_id).first)
@@ -32,7 +32,7 @@ class InterestsController < ApplicationController
   end
   
   def destroy
-    @interest = Interest.find(params[:id])
+    @interest = current_resource
     @activity = (Activity.where(id: @interest.activity_id).first)
     @interest.destroy
     @activities = Activity.all
@@ -41,6 +41,12 @@ class InterestsController < ApplicationController
       format.html { redirect_to home_path }
       format.js { render 'update' }
     end
+  end
+
+private
+  
+  def current_resource
+    @current_resource ||= Interest.find(params[:id]) if params[:id]
   end
   
     

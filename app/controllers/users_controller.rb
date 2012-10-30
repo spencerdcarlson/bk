@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
- 
+  def index
+    @users = User.all
+  end
+    
   
   def new
     @user = User.new
@@ -22,9 +25,14 @@ class UsersController < ApplicationController
   end
   
   def update
-    @user = current_user
+    if current_user.is_admin? && params[:id]
+      @user = User.find params[:id]
+      flash[:notice] = "#{@user.email}'s profile was updated"
+    else
+      @user = current_user
+      flash[:notice] = 'Profile Updated'
+    end
     if @user.update_attributes params[:user] 
-      flash[:notice] = 'Profile Updated '
       respond_to do |format|
         format.html { redirect_to home_path }
         format.js 

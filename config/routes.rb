@@ -7,6 +7,7 @@ Bk::Application.routes.draw do
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
   get 'home' => 'users#show'
+  get 'edit' => 'users#edit'
   get 'activities' => 'activities#index'
 
   

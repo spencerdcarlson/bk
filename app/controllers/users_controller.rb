@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @activities = Activity.all
+    @ordered_interests = Array(@user.interests.sort {|x,y| x.user_rating <=> y.user_rating }).reverse
     @interest = Interest.new
   end
   
@@ -44,6 +45,10 @@ class UsersController < ApplicationController
   
   def edit
     @user = current_user
+  end
+  
+  def current_resource
+    @current_resource ||= current_user
   end
   
   

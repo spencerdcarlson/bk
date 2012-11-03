@@ -23,6 +23,7 @@ describe Permissions, focus: true do
       should allow(:sessions,         [:new,:create,:destroy] )
       should allow(:password_resets,  [:new, :create, :edit, :update] )
       should allow(:users,            [:create,:new])
+      should allow(:authentications,   [:create, :failure])
       should_not allow(:users,        [:index,:show,:edit,:update,:destroy] )
       should_not allow(:activities,   [:index,:new,:create,:show,:edit,:update,:destroy])
       should_not allow(:interests,    [:index,:new,:create,:show,:edit,:update,:destroy])
@@ -39,11 +40,15 @@ describe Permissions, focus: true do
       # Controller Actions
       should allow(:sessions,         :new)
       should allow(:password_resets,  [:new,:create,:edit,:update] )
-      should allow(:users,            [:new,:create,:show])
+      #should allow(:users,            [:new,:create,:show])
+      should allow(:users,            [:new,:create])
       should allow(:interests,        [:new,:create] )
+      should allow(:authentications,  [:create, :failure])
       should_not allow(:activities,   [:index,:new,:create,:show,:edit,:update,:destroy])
+      
       # Controller Actions Resource
-      should allow(:users,            [:edit,:update,:destroy], user)
+      should allow(:users,            [:show,:edit,:update,:destroy], user)
+      should_not allow(:users,        [:show,:edit,:update,:destroy], nil)
       should allow(:interests,        [:edit,:update,:destroy], interest )
       should_not allow(:interests,    [:edit,:update,:destroy], other_interest )
       # Model Attributes
@@ -60,6 +65,7 @@ describe Permissions, focus: true do
       should allow(:password_resets,  [:index,:new,:create,:show,:edit,:update,:destroy])
       should allow(:activities,       [:index,:new,:create,:show,:edit,:update,:destroy])
       should allow(:interests,        [:index,:new,:create,:show,:edit,:update,:destroy])
+      should allow(:authentications,  [:index,:new,:create,:show,:edit,:update,:destroy])
     end
   end
   

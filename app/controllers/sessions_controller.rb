@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   end
   
   def create
+    # user =  User.find_by_omniauth("omniauth.auth") || User.find_by_email(params[:email])
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       if params[:remember_me]
@@ -21,7 +22,7 @@ class SessionsController < ApplicationController
   
   def destroy
     cookies.delete(:auth_token)
-    redirect_to login_path, :notice => 'Loggedout'
+    render '/static_pages/logout' , :notice => 'Loggedout'
   end
   
 end

@@ -31,7 +31,7 @@ private
     else
       if current_user
         flash[:alert] = 'Not Authorized'
-        redirect_to home_path
+        redirect_to home_path 
       else
         session[:protected_page] = request.fullpath
         flash[:alert] = 'Please Login'

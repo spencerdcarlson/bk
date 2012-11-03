@@ -1,0 +1,12 @@
+<% unless current_user.activities.include?(activity) %>
+	<section class='activity-option' data-activity='<%= activity.id %>'>
+		<span class='optional-activity-name on-click lead'><%= activity.name %></span>
+		<%= form_for Interest.new, remote: true, html: { class: 'new_interest inline remote' } do |f| %>
+  		<% activities_array = Activity.all.map { |activity| [activity.name, activity.id] } %>
+      <%= f.select(:activity_id, options_for_select((activities_array),activity.id),{}, class: 'hide')%>
+  		<%= f.select(:user_rating, options_for_select((1..10)),{ :include_blank => true }, data: { activity_id: activity.id }, 
+        class: 'input-xmini input-mini' ) %>
+  		<%= f.submit 'Update', class: 'btn' %>
+		<% end %>
+	</section>
+<% end %>

@@ -26,6 +26,7 @@ module LayoutHelper
     flash.each do |name, msg|
       response = response + content_tag(:div, msg, :id => "flash_#{name}")
     end
+    response.insert(0, "<i class='icon-remove pull-right' id='flash-exit'></i>" )
     flash.discard
     response
   end

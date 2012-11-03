@@ -48,6 +48,6 @@ Bk::Application.configure do
     password: CONFIG[:SMTP_PASSWORD]
   }
   
-  config.action_mailer.default_url_options = { host: CONFIG[:MAILER_HOST]  }
+  config.action_mailer.default_url_options = { host: CONFIG[:MAILER_HOST] }
   
 end

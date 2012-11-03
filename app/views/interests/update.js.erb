@@ -1,6 +1,7 @@
-$('#current-user-activties').html("<%= j render partial: 'users/user_activities', collection: current_user.interests, as: :interest %>")
-$("#activity-options").html("<%= j render partial: 'users/edit_activities', collection: Activity.all, as: :activity %>")
+$('#current-user-activties').html("<%= j render partial: 'user_interests', collection: Array(current_user.interests.sort {|x,y| x.user_rating <=> y.user_rating }).reverse, as: :interest %>")
+$("#activity-options").html("<%= j render partial: 'add_interest', collection: Activity.all, as: :activity %>")
 $('.edit_interest').editInterest()
 $('.new_interest').editInterest()
 $('.on-click').addOnClickActivities()
-$('#flash').html("<%= j raw(flash_display) %>");
+$('#flash').html("<%= j raw(flash_display) %>")
+$('.flash').flashExitListen();

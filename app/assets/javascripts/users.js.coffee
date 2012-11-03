@@ -16,22 +16,10 @@ jQuery.fn.addOnClickActivities = ->
 		$(".delete-current-activity[data-activity-id='"+$(this).data('activity-id')+"']").toggle()
 	$('.optional-activity-name').click ->
 		console.log $(this).html() + " activity clicked "
-
-jQuery.fn.addOnClickZipCode = ->
-	$('#zip-code').click ->
-		$(this).toggle()
-		$('.update-zip-code-form').toggle()
-	$('#update-zip-code-x').click ->
-		$('.update-zip-code-form').toggle()
-		$('#zip-code').toggle()
 	
-
 jQuery ->
-	$('.edit_interest').editInterest()
-	$('.new_interest').editInterest()
+	$('.remote').editInterest()
 	$('.on-click').addOnClickActivities()
-	$('.zip-code').addOnClickZipCode()
-	
 	# Add Activity Btn Click Listing
 	$('#add-activity-btn').click ->
 		$('#add-activity').toggle()
@@ -39,6 +27,13 @@ jQuery ->
 			$(this).html('-')
 		else
 			$(this).html('+')
+      
+  
+
+
+  
+  
+    
 	
 	
 			

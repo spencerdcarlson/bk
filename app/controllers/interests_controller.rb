@@ -8,25 +8,25 @@ class InterestsController < ApplicationController
   end
   
   def create
-    @interest = Interest.new(activity_id: params[:activity_id], user_rating: params[:user_rating])
-    @interest.user_id = current_user.id if current_user
-    @interest.save
-    flash[:notice] = "#{(Activity.where(id: @interest.activity_id).first.name)} was added to your interests"
+    @interest = current_user.interests.build(params[:interest])
+    if @interest.save 
+      flash[:notice] = "#{(Activity.where(id: @interest.activity_id).first.name)} was added to your interests"
+    else
+      flash[:notice] = "Error occurred while trying to add #{(Activity.where(id: @interest.activity_id).first.name)} to your interests"
+    end 
     respond_to do |format|
       format.html { if @interest.save then redirect_to home_path else render "new" end }
       format.js { render 'update' }
     end
-    
   end
-  
-
   
   def update
     @interest = current_resource
-    @interest.user_rating = params[:user_rating]
-    @interest.save
-    @activity = (Activity.where(id: @interest.activity_id).first)
-    flash[:notice] = "Your rating for #{@activity.name} was updated to #{@interest.user_rating}"
+    if @interest.update_attributes(params[:interest])
+      flash[:notice] = "Your rating for #{@interest.activity.name} was updated to #{@interest.user_rating}"
+    else
+      flash[:notice] = "Error occurred while trying to update your rating for #{@interest.activity.name}"
+    end
     respond_to do |format|
       format.html
       format.js 
@@ -35,10 +35,12 @@ class InterestsController < ApplicationController
   
   def destroy
     @interest = current_resource
-    @activity = (Activity.where(id: @interest.activity_id).first)
-    @interest.destroy
-    @activities = Activity.all
-    flash[:notice] = "#{@activity.name} was removed to your interests"
+    activity = @interest.activity
+    if @interest.destroy
+      flash[:notice] = "#{activity.name} was removed to your interests"
+    else
+      flash[:notice] = "Error occured while trying to remove #{activity.name} from your interests"
+    end
     respond_to do |format|
       format.html { redirect_to home_path }
       format.js { render 'update' }

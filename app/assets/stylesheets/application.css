@@ -35,4 +35,29 @@
  .clear-left {
 	 clear: left;
  }
+ .login-link:hover{
+    text-decoration: none;
+ }
+ 
+ input.btn.input-nav, 
+ button#update-zip-code-x.btn.zip-code.input-nav,
+ input#user_zip_code.input-mini.input-nav {
+   margin-top: 6px; 
+ }
+ 
+ form.edit_user.zip-code {
+   margin-left: 15px;
+ }
+ 
+ #flash-exit{
+   margin-top: 3px;
+   margin-right: 2px;
+ }
+ 
+ ul.dropdown-menu { 
+   width: 180px;
+   height: 45px;
+   z-index: 1052;
+ }
+ 
  

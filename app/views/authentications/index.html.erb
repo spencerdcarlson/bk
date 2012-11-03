@@ -1,0 +1,8 @@
+<% if @authentications %>
+	<% @authentications.each do |a| %>
+	<strong>Provider:</strong> <%= a.provider %>
+	<strong>UID:</strong> <%= a.uid%>
+	<strong>Image:</strong> <%= a.image_url %><br>
+	<% end 
+end %>
+	

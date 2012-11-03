@@ -1,8 +1,13 @@
 Bk::Application.routes.draw do
 
+
   # put 'password/update' => 'password_resets#update'
   # get 'password/reset/confirm' => 'password_resets#edit'
   # get 'password/reset' => 'password_resets#new'
+  match 'auth/:provider/callback', to: 'authentications#create'
+  match 'auth/failure', to: 'authentications#failure'
+  match 'auth/:provider/returning', to: 'authentications#returning'
+  get 'authentications' => 'authentications#index'
   get 'register' => 'users#new'
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'

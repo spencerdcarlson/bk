@@ -1,0 +1,38 @@
+jQuery ->
+  $.ajax
+    url: "#{window.location.protocol}//connect.facebook.net/en_US/all.js"
+    dataType: 'script'
+    cache: true
+
+window.returning = (provider, uid) ->
+    unless jQuery.cookie("auth_token")
+        $.ajax
+            type: "GET"
+            url: "/auth/"+provider+"/returning"
+            data: { provider: provider, uid: uid }
+    
+window.fbAsyncInit = ->
+    FB.init(appId: '<%= CONFIG[:FACEBOOK_APP_ID] %>', xfbml: true, status: true, cookie: true)
+    FB.getLoginStatus (response) ->
+        if response.status is "connected"
+            # Logged In & Facebook App Is Authorized
+            FB.api "/me", (response) ->
+                unless jQuery.cookie("auth_token")
+                    returning("facebook",response.id)                
+        else if response.status is "not_authorized"
+            console.log("Logged In But Facebook App Is Not Authorized")
+        else
+            console.log("Not Logged In to Facebook")
+((d) ->
+	js = undefined
+	id = "facebook-jssdk"
+	ref = d.getElementsByTagName("script")[0]
+	return  if d.getElementById(id)
+	js = d.createElement("script")
+	js.id = id
+	js.async = true
+	js.src = "//connect.facebook.net/en_US/all.js"
+	ref.parentNode.insertBefore js, ref
+) document
+
+  

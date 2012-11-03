@@ -1,0 +1,38 @@
+<% if params[:controller] == 'password_resets'%>
+<%= link_to 'DayBreak', root_path, class: 'brand' %>
+<% elsif current_user %>
+<%= link_to 'DayBreak', home_path, class: 'brand' %>
+<ul class="nav">
+  <li class="active"><%= link_to 'Home', home_path %></li>
+  <li><%= link_to 'Logout', logout_path %></li>
+  <li class='dropdown'>
+    <a id="zip-code-drop-down" href='#' role="button" class="dropdown-toggle" data-toggle="dropdown" >
+      Zip: 
+      <% if current_user.zip_code %>
+        <%= current_user.zip_code %>
+      <% else %>
+        Set Current Zip Code
+      <% end %>
+      <b class="caret"></b>
+    </a><!--/.zip-code-drop-down -->
+      <ul class="dropdown-menu" role="menu" aria-labelledby="zip-code-drop-down">
+        <li>
+          <%= form_for current_user, html: {class: 'edit_user zip-code'}, remote: true do |f| %>
+            <section class="input-append">
+              <%= f.text_field :zip_code, class: 'input-mini input-nav' %>
+              <%= f.submit 'Update', class: 'btn input-nav' %>
+            </section><!-- /.input-append -->
+          <% end %>
+        </li>
+      </ul><!--/.dropdown-menu -->
+  </li><!--/.dropdown -->
+</ul><!--/.nav -->    
+<% else %>
+	<%= link_to 'DayBreak', root_path, class: 'brand' %>
+    	<section class="nav-collapse collapse">
+        <ul class="nav">
+          <li class="active"><%= link_to 'Register', register_path %></li>
+          <li><%= link_to 'Login', login_path %></li>
+        </ul>
+    	</section><!--/.nav-collapse -->
+<% end %>

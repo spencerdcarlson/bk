@@ -18,6 +18,9 @@ gem "strong_parameters", "~> 0.1.5"
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem "rspec-rails", group: [:test, :development]
 gem 'rb-fsevent', '~> 0.9.1'
+gem "omniauth-facebook", "~> 1.4.1"
+gem 'omniauth-twitter', "~> 0.0.13"
+gem "omniauth-500px", "~> 0.1.0"
 
 group :test do
   gem "factory_girl_rails"
@@ -29,4 +32,5 @@ end
 
 group :development do
   gem "letter_opener"
+  gem 'guard-pow'
 end

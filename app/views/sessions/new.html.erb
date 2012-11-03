@@ -1,6 +1,17 @@
 <% title 'ⱭB => Login', false %>
+<%= javascript_include_tag "include/facebook" %>
 <h1>Log In</h1>
+<%= link_to("/auth/facebook", id: "facebook-sign-in", class: 'login-link' ) do %>
+	<%= image_tag("facebook_256x256.png", size: '30x30', id: 'fb-login-icon')%>
+<% end %>
+<%= link_to("/auth/twitter", id: "twiter-sign-in", class: 'login-link' ) do %>
+<%= image_tag("twitter_1024x1024.png", size: '30x30', id: 'twitter-login-icon')%>
+<% end %>
+
+
 <%= form_tag sessions_path do %>
+
+
 <div class="field">
 	<%= label_tag :email %>
 	<%= text_field_tag :email, params[:email] %>

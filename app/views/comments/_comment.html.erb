@@ -1,0 +1,11 @@
+<section class='comment-content clean-border'>
+  <figure id='commnet-figure'>
+    <img class='user-image img-polaroid' alt="<%= comment.user.username %> image" src="<%= comment.user.image_url %>">
+    <figcaption><%= comment.user.username %></figcaption>
+  </figure>
+  <section id='comment-text'><%= comment.text %></section>
+  <section id='comment-info'>
+    <span id='comment-date-time'><%= comment.updated_at.strftime("%l:%M %P %b %d, %Y")%></span>
+     <%= link_to 'Delete', user_comment_path(current_user,comment), method: :delete, remote: true  %>
+  </section>
+</section><!--/.comment-content -->

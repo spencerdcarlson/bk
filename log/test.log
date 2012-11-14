@@ -55054,3 +55054,195 @@ Binary data inserted for `string` type on column `password_digest`
   [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'interests';
   [1m[36m (1.1ms)[0m  [1mDELETE FROM "users";[0m
   [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+Connecting to database specified by database.yml
+  [1m[36m (1.9ms)[0m  [1mDELETE FROM "activities";[0m
+  [1m[35m (0.4ms)[0m  DELETE FROM sqlite_sequence where name = 'activities';
+  [1m[36m (1.5ms)[0m  [1mDELETE FROM "authentications";[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'authentications';
+  [1m[36m (1.7ms)[0m  [1mDELETE FROM "interests";[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'interests';
+  [1m[36m (2.0ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.5ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (1.6ms)[0m  [1mDELETE FROM "activities";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'activities';
+  [1m[36m (1.2ms)[0m  [1mDELETE FROM "authentications";[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'authentications';
+  [1m[36m (1.3ms)[0m  [1mDELETE FROM "interests";[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'interests';
+  [1m[36m (1.5ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'person1@example.com' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."auth_token" = 'HKpIhNQwPPr2gmvC90kDDw' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (43.3ms)[0m  [1mINSERT INTO "users" ("auth_token", "created_at", "email", "is_admin", "password_digest", "password_reset_sent_at", "password_reset_token", "updated_at", "zip_code") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["auth_token", "HKpIhNQwPPr2gmvC90kDDw"], ["created_at", Fri, 09 Nov 2012 20:11:06 UTC +00:00], ["email", "person1@example.com"], ["is_admin", false], ["password_digest", "$2a$10$D7iHZLGeQls2iWBb06rcku20YKxI4PC2OTtP2ujoF9YLnEwAwYWQu"], ["password_reset_sent_at", nil], ["password_reset_token", nil], ["updated_at", Fri, 09 Nov 2012 20:11:06 UTC +00:00], ["zip_code", 85203]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "activities" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 09 Nov 2012 20:11:06 UTC +00:00], ["name", "Mountain Biking"], ["updated_at", Fri, 09 Nov 2012 20:11:06 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.7ms)[0m  rollback transaction
+  [1m[36m (1.1ms)[0m  [1mDELETE FROM "activities";[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'activities';
+  [1m[36m (1.4ms)[0m  [1mDELETE FROM "authentications";[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'authentications';
+  [1m[36m (1.5ms)[0m  [1mDELETE FROM "interests";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'interests';
+  [1m[36m (1.7ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (1.3ms)[0m  [1mDELETE FROM "activities";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'activities';
+  [1m[36m (1.2ms)[0m  [1mDELETE FROM "authentications";[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'authentications';
+  [1m[36m (1.3ms)[0m  [1mDELETE FROM "interests";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'interests';
+  [1m[36m (1.3ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+Connecting to database specified by database.yml
+  [1m[36m (3.0ms)[0m  [1mDELETE FROM "activities";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'activities';
+  [1m[36m (1.5ms)[0m  [1mDELETE FROM "authentications";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'authentications';
+  [1m[36m (1.6ms)[0m  [1mDELETE FROM "interests";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'interests';
+  [1m[36m (1.6ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'person1@example.com' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."auth_token" = '7dgJCEMzEzLQP6sCr9ITGQ' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (2.4ms)[0m  [1mINSERT INTO "users" ("auth_token", "created_at", "email", "is_admin", "password_digest", "password_reset_sent_at", "password_reset_token", "updated_at", "zip_code") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["auth_token", "7dgJCEMzEzLQP6sCr9ITGQ"], ["created_at", Fri, 09 Nov 2012 20:11:16 UTC +00:00], ["email", "person1@example.com"], ["is_admin", false], ["password_digest", "$2a$10$2QgoZzfqUnVtKHK9ICEqOuN8lj0Ot5ANWGEr5tocE97qyDFYaRQ32"], ["password_reset_sent_at", nil], ["password_reset_token", nil], ["updated_at", Fri, 09 Nov 2012 20:11:16 UTC +00:00], ["zip_code", 85203]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "activities" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 09 Nov 2012 20:11:16 UTC +00:00], ["name", "Mountain Biking"], ["updated_at", Fri, 09 Nov 2012 20:11:16 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  rollback transaction
+  [1m[36m (1.3ms)[0m  [1mDELETE FROM "activities";[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'activities';
+  [1m[36m (1.2ms)[0m  [1mDELETE FROM "authentications";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'authentications';
+  [1m[36m (1.6ms)[0m  [1mDELETE FROM "interests";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'interests';
+  [1m[36m (1.4ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (1.1ms)[0m  [1mDELETE FROM "activities";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'activities';
+  [1m[36m (1.4ms)[0m  [1mDELETE FROM "authentications";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'authentications';
+  [1m[36m (1.5ms)[0m  [1mDELETE FROM "interests";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'interests';
+  [1m[36m (1.6ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (1.5ms)[0m  [1mDELETE FROM "activities";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'activities';
+  [1m[36m (1.4ms)[0m  [1mDELETE FROM "authentications";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'authentications';
+  [1m[36m (1.4ms)[0m  [1mDELETE FROM "interests";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'interests';
+  [1m[36m (1.7ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+Connecting to database specified by database.yml
+  [1m[36m (2.5ms)[0m  [1mDELETE FROM "activities";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'activities';
+  [1m[36m (1.5ms)[0m  [1mDELETE FROM "authentications";[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'authentications';
+  [1m[36m (1.6ms)[0m  [1mDELETE FROM "interests";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'interests';
+  [1m[36m (1.6ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (1.3ms)[0m  [1mDELETE FROM "activities";[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'activities';
+  [1m[36m (1.1ms)[0m  [1mDELETE FROM "authentications";[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'authentications';
+  [1m[36m (1.1ms)[0m  [1mDELETE FROM "interests";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'interests';
+  [1m[36m (1.1ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'person1@example.com' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."auth_token" = 'J2zkK5UcgCxKZqAH0O4z0A' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (2.6ms)[0m  [1mINSERT INTO "users" ("auth_token", "created_at", "email", "is_admin", "password_digest", "password_reset_sent_at", "password_reset_token", "updated_at", "zip_code") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["auth_token", "J2zkK5UcgCxKZqAH0O4z0A"], ["created_at", Fri, 09 Nov 2012 20:14:08 UTC +00:00], ["email", "person1@example.com"], ["is_admin", false], ["password_digest", "$2a$10$HdtOSFOphQ7BLIisqoTzS.t39j019z/XmOnNPm3eN4uI6jJTDYYg."], ["password_reset_sent_at", nil], ["password_reset_token", nil], ["updated_at", Fri, 09 Nov 2012 20:14:08 UTC +00:00], ["zip_code", 85203]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "activities" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 09 Nov 2012 20:14:08 UTC +00:00], ["name", "Mountain Biking"], ["updated_at", Fri, 09 Nov 2012 20:14:08 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (8.4ms)[0m  rollback transaction
+  [1m[36m (5.5ms)[0m  [1mDELETE FROM "activities";[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'activities';
+  [1m[36m (2.2ms)[0m  [1mDELETE FROM "authentications";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'authentications';
+  [1m[36m (3.0ms)[0m  [1mDELETE FROM "interests";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'interests';
+  [1m[36m (3.2ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (1.2ms)[0m  [1mDELETE FROM "activities";[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'activities';
+  [1m[36m (92.0ms)[0m  [1mDELETE FROM "authentications";[0m
+  [1m[35m (0.6ms)[0m  DELETE FROM sqlite_sequence where name = 'authentications';
+  [1m[36m (27.8ms)[0m  [1mDELETE FROM "interests";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'interests';
+  [1m[36m (1.6ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+Connecting to database specified by database.yml
+  [1m[36m (2.5ms)[0m  [1mDELETE FROM "activities";[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'activities';
+  [1m[36m (1.5ms)[0m  [1mDELETE FROM "authentications";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'authentications';
+  [1m[36m (1.3ms)[0m  [1mDELETE FROM "interests";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'interests';
+  [1m[36m (1.3ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (1.1ms)[0m  [1mDELETE FROM "activities";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'activities';
+  [1m[36m (1.3ms)[0m  [1mDELETE FROM "authentications";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'authentications';
+  [1m[36m (1.0ms)[0m  [1mDELETE FROM "interests";[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'interests';
+  [1m[36m (1.0ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'person1@example.com' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."auth_token" = 'ALNDxHBMGrsPTsbvSt-PqQ' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (2.8ms)[0m  [1mINSERT INTO "users" ("auth_token", "created_at", "email", "is_admin", "password_digest", "password_reset_sent_at", "password_reset_token", "updated_at", "zip_code") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["auth_token", "ALNDxHBMGrsPTsbvSt-PqQ"], ["created_at", Fri, 09 Nov 2012 20:14:24 UTC +00:00], ["email", "person1@example.com"], ["is_admin", false], ["password_digest", "$2a$10$kQGWH.ql8rhiWKSkvKV//uMl74AeQ53hLyiIMSQpBNFMkND0TPSrC"], ["password_reset_sent_at", nil], ["password_reset_token", nil], ["updated_at", Fri, 09 Nov 2012 20:14:24 UTC +00:00], ["zip_code", 85203]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "activities" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 09 Nov 2012 20:14:24 UTC +00:00], ["name", "Mountain Biking"], ["updated_at", Fri, 09 Nov 2012 20:14:24 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  rollback transaction
+  [1m[36m (4.8ms)[0m  [1mDELETE FROM "activities";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'activities';
+  [1m[36m (1.1ms)[0m  [1mDELETE FROM "authentications";[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'authentications';
+  [1m[36m (1.3ms)[0m  [1mDELETE FROM "interests";[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'interests';
+  [1m[36m (1.4ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (14.4ms)[0m  [1mDELETE FROM "activities";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'activities';
+  [1m[36m (1.9ms)[0m  [1mDELETE FROM "authentications";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'authentications';
+  [1m[36m (1.0ms)[0m  [1mDELETE FROM "interests";[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'interests';
+  [1m[36m (2.1ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'users';

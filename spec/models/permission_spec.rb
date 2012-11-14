@@ -15,7 +15,7 @@ RSpec::Matchers.define :allow_attr do |model,atributes|
   end
 end
 
-describe Permissions, focus: true do
+describe Permissions do
   describe "as guest" do
     subject { Permissions.permission_for(nil) }
     it "has correct privliges for a guest" do
@@ -23,7 +23,7 @@ describe Permissions, focus: true do
       should allow(:sessions,         [:new,:create,:destroy] )
       should allow(:password_resets,  [:new, :create, :edit, :update] )
       should allow(:users,            [:create,:new])
-      should allow(:authentications,   [:create, :failure])
+      should allow(:authentications,  [:create, :failure])
       should_not allow(:users,        [:index,:show,:edit,:update,:destroy] )
       should_not allow(:activities,   [:index,:new,:create,:show,:edit,:update,:destroy])
       should_not allow(:interests,    [:index,:new,:create,:show,:edit,:update,:destroy])
@@ -40,7 +40,6 @@ describe Permissions, focus: true do
       # Controller Actions
       should allow(:sessions,         :new)
       should allow(:password_resets,  [:new,:create,:edit,:update] )
-      #should allow(:users,            [:new,:create,:show])
       should allow(:users,            [:new,:create])
       should allow(:interests,        [:new,:create] )
       should allow(:authentications,  [:create, :failure])

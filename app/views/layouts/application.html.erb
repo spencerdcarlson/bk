@@ -21,9 +21,12 @@
 		<!-- Navigation =END -->
 		
       <section id='flash'>
-  			<% flash.each do |name, msg| %>
+  			<i class='icon-remove pull-right' id='flash-exit'></i>
+        <section id='flashWrap'>
+        <% flash.each do |name, msg| %>
           <%= content_tag :div, msg, :id => "flash_#{name}" %>
         <% end %>
+        </section>
   		</section><!--/#flash -->
       <%= content_tag :h1, yield(:title) if show_title? %>
       <section class='container main'>

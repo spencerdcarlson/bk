@@ -60,4 +60,14 @@
    z-index: 1052;
  }
  
- 
+ .user-image{
+   width: 35px;
+   height: 35px;
+ }
+ .thick-border {
+   border: 1px solid #000;
+ }
+ .banner-img{
+   width: 940px;
+   height: 180px;
+ }

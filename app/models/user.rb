@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :interests
   has_many :activities, :through => :interests
   has_many :authentications
+  has_many :comments
   has_secure_password
   
   attr_accessible :email, :password, :password_confirmation, :zip_code, :is_admin

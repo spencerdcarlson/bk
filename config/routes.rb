@@ -17,12 +17,16 @@ Bk::Application.routes.draw do
 
   
   resources :sessions
-  resources :activities
   resources :interests
   resources :password_resets
   
+  resources :activities do
+    resources :places
+  end
+  
   resources :users do
        resources :activities
+       resources :comments
   end
   
   resources :users do

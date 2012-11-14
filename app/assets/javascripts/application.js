@@ -16,6 +16,3 @@
 //= require_directory .
 //= require bootstrap
 //= require twitter/bootstrap/rails/confirm
-
-
-

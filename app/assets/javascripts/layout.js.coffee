@@ -7,3 +7,8 @@ jQuery.fn.flashExitListen = ->
 
 jQuery ->
   $('.flash').flashExitListen()
+  if $("#flashWrap").is(":empty")
+    console.log 'Empty'
+
+    
+  

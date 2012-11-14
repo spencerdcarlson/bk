@@ -1,0 +1,4 @@
+$('#place-comments-wrap').html("<%= j render partial: 'comments/comment', collection: @comments, as: :comment %>")
+$('#new-comment-text-area').val('')
+$('#flash').html("<%= j raw(flash_display) %>")
+$('.flash').flashExitListen()

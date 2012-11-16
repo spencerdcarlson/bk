@@ -1,6 +1,14 @@
 // Place all the styles related to the places controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*
+* Image Sizes: 
+*   banner:     940x180
+*   thumbnail:  84x69
+*   default:    530x350
+*   gallary:    200x140
+* */
 .place-thumbnail{
   width: 84px;
   height: 69px;
@@ -8,6 +16,14 @@
 #place-map{
   float: left;
   
+}
+.banner-img{
+  width: 940px;
+  height: 180px;
+}
+.place-default{
+  width: 530px;
+  height: 350px;
 }
 #place-thumbnails{
   
@@ -28,6 +44,36 @@
   font-size: xx-large;
   text-align: center;
 }
+#place-comments{
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
 #new-comment-text-area{
   margin-top: 10px;
+}
+
+.image-modal-link:hover{
+  text-decoration: none;
+}
+
+.place-figure{
+  margin: 5px;
+  float: left;
+  width: 200px;
+  height: 160px;
+}
+.two-x-one-forty{
+  width: 200px;
+  height: 140px;
+}
+.hover-gray:hover{
+  background: #000;
+  opacity: .7;
+  color: white;
+}
+.hover-gray{
+  //opacity: .7;
+}
+figcaption{
+  padding-left: 5px;
 }

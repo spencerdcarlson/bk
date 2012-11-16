@@ -1,6 +1,8 @@
 Bk::Application.routes.draw do
 
 
+  get "images/index"
+
   # put 'password/update' => 'password_resets#update'
   # get 'password/reset/confirm' => 'password_resets#edit'
   # get 'password/reset' => 'password_resets#new'
@@ -14,6 +16,9 @@ Bk::Application.routes.draw do
   get 'home' => 'users#show'
   get 'edit' => 'users#edit'
   get 'activities' => 'activities#index'
+  match '/activities/:activity_id/places/:place_id/images(.:format)', to: 'images#place_index'
+  match '/users/:user_id/images(.:format)', to: 'images#user_index'
+  match '/users/:user_id/images/:id(.:format)', to: 'images#user_update'
 
   
   resources :sessions
@@ -21,17 +26,18 @@ Bk::Application.routes.draw do
   resources :password_resets
   
   resources :activities do
-    resources :places
-  end
-  
-  resources :users do
-       resources :activities
-       resources :comments
+    resources :places do
+      resources :images
+    end
   end
   
   resources :users do
     resources :interests
+    resources :activities
+    resources :comments
+    resources :images
   end
+  
   #  
   #  resources :activities do
   #    resources :interests

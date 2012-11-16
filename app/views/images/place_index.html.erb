@@ -1,0 +1,10 @@
+<h1><%= @place.title %></h1>
+<% @images.each do |image| %>
+<figure class='place-figure hover-gray'>
+<img src="<%= image.url %>" class='two-x-one-forty' >
+<figcaption>
+  Rating: <%= image.rating %>
+</figcaption>
+</figure>
+<% end %>
+

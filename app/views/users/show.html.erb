@@ -4,6 +4,7 @@
     <em>Click on an activity to upadte your rating</em>
   </small>
   <%= render partial: '/interests/user_interests', collection: @ordered_interests, as: :interest %>
+  <%= link_to 'My Images', user_images_path(current_user), class: 'btn btn-link' %>
 </section>
 <span id='add-activity-btn' class='on-click-once btn-link'>+</span>
 <section id='add-activity' class='hide'>

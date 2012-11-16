@@ -1,0 +1,30 @@
+// Place all the styles related to the images controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/*
+* Image Sizes: 
+*   banner:     940x180
+*   thumbnail:  84x69
+*   default:    530x350
+*   gallery:    200x140
+* */
+.image-banner{
+  width: 940px;
+  height: 180px;
+}
+.image-default{
+  width: 530px;
+  height: 350px;
+}
+.image-gallery{
+  width: 200px;
+  height: 140px;
+}
+.image-thumbnail{
+  width: 84px;
+  height: 69px;
+}
+
+.user-image-default-figcaption{
+  width: 817px;
+}

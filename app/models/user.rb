@@ -11,9 +11,10 @@ class User < ActiveRecord::Base
   has_many :activities, :through => :interests
   has_many :authentications
   has_many :comments
+  has_many :images
   has_secure_password
   
-  attr_accessible :email, :password, :password_confirmation, :zip_code, :is_admin
+  attr_accessible :email, :password, :password_confirmation, :zip_code, :is_admin, :username
   validates_uniqueness_of :email
   validates :email, :presence => true, :email => true
   #validates :password, :length => { :minimum => 8 }

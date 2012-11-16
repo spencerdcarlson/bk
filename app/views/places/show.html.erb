@@ -1,67 +1,101 @@
-<section id='place-banner'><img class='banner-img' src="<%= @banner_images.first.url %>" ></section>
-<section id='place-title' class='lead'><%= @place.title %></section>
+<section id='place-banner'><img class='banner-img' src="<%= @banner_images.first.url %>" ></section><!-- /#place-banner -->
+<section id='place-title' class='lead'><%= @place.title %></section><!-- /#place-title -->
 <section id='place-map' class='span5'>
-  <iframe class='thick-border' width="348" height="215" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Banzai+Beach&amp;aq=&amp;sll=21.661736,-158.048844&amp;sspn=0.023731,0.045447&amp;ie=UTF8&amp;hq=&amp;hnear=Banzai+Beach&amp;ll=21.661736,-158.048844&amp;spn=0.023732,0.045447&amp;t=m&amp;z=14&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Banzai+Beach&amp;aq=&amp;sll=21.661736,-158.048844&amp;sspn=0.023731,0.045447&amp;ie=UTF8&amp;hq=&amp;hnear=Banzai+Beach&amp;ll=21.661736,-158.048844&amp;spn=0.023732,0.045447&amp;t=m&amp;z=14" style="color:#0000FF;text-align:left">View Larger Map</a></small>
-</section>
+  <iframe class='thick-border' src="https://maps.google.com/maps?f=q&amp;sspn=0.023731,0.045447&amp;ll=21.661736,-158.048844&amp;spn=0.023732,0.045447&amp;output=embed">
+  </iframe>
+  <br>
+  <small>
+    <a href="https://maps.google.com/maps?f=q&amp;sspn=0.023731,0.045447&amp;ll=21.661736,-158.048844&amp;spn=0.023732,0.045447">View Larger Map</a>
+  </small>
+</section><!-- /#place-map -->
 <section id='place-thumbnails span6'>
   <% @default_images.each_with_index do |image, index = 0| %>
     <% if index < 5 %>
-      <%# image.rating %>
-      <a href="#image-modal" role="button" data-toggle="modal">
-        <img class='place-thumbnail img-rounded' alt="<%= @place.title %> thumbnail" src="<%= image.url %>">
+      <a class='image-modal-link' href="#image-modal" role="button" data-toggle="modal" data-image-frame="<%= index %>">
+        <img class='place-thumbnail img-rounded hover-gray' alt="<%= @place.title %> thumbnail" src="<%= image.url %>">
       </a>
     <% end %>
   <% end %>
-</section>
-<section>
-  <!-- Modal -->
-  <section id="image-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <section class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="myModalLabel"><%= @place.title %></h3>
-    </section>
-    <section class="modal-body">
-      
-      <div id="myCarousel" class="carousel slide">
-        <!-- Carousel items -->
-        <div class="carousel-inner">
-          <% @default_images.each do |image| %>
+  <br>
+  <%= link_to 'view all', activity_place_images_path(@place.activity,@place), class: '' %>
+</section><!-- /.place-thumbnails -->
+
+<section id="image-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <section class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel"><%= @place.title %></h3>
+  </section><!-- /.modal-header -->
+  <section class="modal-body">
+    <section id="place-carousel" class="carousel slide">
+      <section class="carousel-inner">
+        <% @default_images.each_with_index do |image, index = 0| %>
+          <% if index == 0 %>
+            <section class='active item'>
+              <img class='place-default' alt="<%= @place.title %> image" src="<%= image.url %>" >
+              <section class="carousel-caption">
+                <% if  image.title %>
+                  <h4><%= image.title %></h4>
+                <% else %>
+                  <h4><%= @place.title %></h4>
+                <% end %>
+                <% if image.description %>
+                  <p><%= image.description %> <small><em>- <%= image.user.username %></em></small></p>
+                <% else %>
+                  <p><small><em>- <%= image.user.username %></em></small></p>
+                <% end %>
+              </section><!-- /.carousel-caption -->
+            </section><!-- /.active item -->
+          <% else %>
             <section class='item'>
               <img class='place-default' alt="<%= @place.title %> image" src="<%= image.url %>">
-            </section>
-          <% end %>  
-        </div>
-        <!-- Carousel nav -->
-        <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-      </div>      
-    </section>
-    <section class="modal-footer">
-      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    </section>
-  </section>
-</section>
+              <section class="carousel-caption">
+                <% if  image.title %>
+                  <h4><%= image.title %></h4>
+                <% else %>
+                  <h4><%= @place.title %></h4>
+                <% end %>
+                <% if image.description %>
+                  <p><%= image.description %> <small><em>- <%= image.user.username %></em></small></p>
+                <% else %>
+                  <p><small><em>- <%= image.user.username %></em></small></p>
+                <% end %>
+              </section><!-- /.carousel-caption -->
+            </section><!-- /.item -->
+            <% end #if index == 0 %>
+          <% end #@default_images.each  %>  
+      </section><!-- /.carousel-inner -->
+        <a class="carousel-control left" href="#place-carousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#place-carousel" data-slide="next">&rsaquo;</a>
+    </section><!-- /.place-carousel -->
+  </section><!-- /.modal-body -->      
+  <section class="modal-footer">
+    <button class='btn place-carousel-pause' data-toggle='button'><i class="icon-pause"></i></button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </section><!-- /.modal-footer -->
+</section><!-- /#image-modal -->
+
 <section id='place-info' class='span6'>
   <section id='place-location'>
     <span class='place-info-title'>Location: </span><span class='place-info-text'><%= @place.location %></span>
-  </section>
+  </section><!-- /#place-location -->
   <section id='place-hours'>
     <span class='place-info-title'>Hours: </span><span class='place-info-text'><%= @place.hours %></span> 
-  </section>
+  </section><!-- /#place-hours -->
   <section id='place-directions'>
     <span class='place-info-title'>Directions: </span><span class='place-info-text'><%= @place.directions %></span> 
-  </section>
-</section>
+  </section><!-- /#place-directions -->
+</section><!-- /#place-info -->
+
 <section id='place-comments' class='span11 clean-border'>
-  <section id='place-comments-title' class='lead'>Comments</section>
+  <section id='place-comments-title' class='lead'>Comments</section><!-- /#place-comments-title -->
   <section id='place-comments-wrap'>
     <%= render partial: 'comments/comment', collection: @comments, as: :comment %>
-  </section>
+  </section><!-- /#place-comments-wrap -->
   <section class='place-comment-new clean-border'>
     <%= form_for [current_user, @comment], remote: true, html: { class: 'new_comment span6'} do |f| %>
     <%= f.text_area :text, size: '100x2', class: 'span10', id: 'new-comment-text-area' %><br>
     <%= f.hidden_field :place_id, value: @place.id %>
     <%= f.submit 'Comment', class: 'btn' %>
     <% end %>
-  </section>
-</section>
+  </section><!-- /.place-comment-new -->
+</section><!-- /#place-comments -->

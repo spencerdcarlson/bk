@@ -1,0 +1,41 @@
+<h1>Images</h1>
+<h3>Activity Images</h3>
+<% @banner_images.each do |image| %>
+<figure class='user-image-banner-figure'>
+<img src="<%= image.url %>" class='image-banner'>
+<figcaption class='hover-gray user-image-banner-figcaption'>
+  
+  <%= form_for [current_user, image], remote: true do |f| %>
+    <% activities_array = Activity.all.map { |activity| [activity.name, activity.id] } %>  
+  <small>
+  <p>
+    <strong>Activity:</strong> <%= image.activity.name if image.activity %><span><%= f.select(:activity_id, options_for_select(activities_array, image.activity.id), {}, class: 'input-medium') %></span><br>
+    <strong>Rating:</strong> <%= image.rating %><br>
+    <strong>Url:</strong> <%= image.url %><span><%= f.text_field :url, class: 'input-xxlarge' %></span><br>
+    <span><%= f.submit 'Update', class: 'btn' %></span>
+  </p>
+</small>
+<% end %>
+</figcation>
+</figure>
+<% end %>
+
+<h3>Place Images</h3>
+<% @default_images.each do |image| %>
+<figure class='user-image-default-figure'>
+<img src="<%= image.url %>" class='image-thumbnail'>
+<img src="<%= image.url %>" class='image-gallery'>
+<img src="<%= image.url %>" class='image-default'>
+<figcaption class='hover-gray user-image-default-figcaption'>
+  <small>
+  <p>
+    <strong>Place:</strong> <%= image.place.title if image.place %><br>
+    <strong>Rating:</strong> <%= image.rating %><br>
+    <strong>Url:</strong> <%= image.url %><br>
+    <strong>Title:</strong> <%= image.title %><br>
+    <strong>Description:</strong> <%= image.description %><br>
+  </p>
+</small>
+</figcation>
+</figure>
+<% end %>

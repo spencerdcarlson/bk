@@ -2,6 +2,8 @@
 <%= form_for user, html: {class: 'form-inline edit_user'} do |f| %>
 	<%= f.label :email %>
 	<%= f.text_field :email, class: 'input-large' %>
+  <%= f.label :username %>
+  <%= f.text_field :username, class: 'input-small' %>
 	<%= f.label :zip_code, 'Zip' %>
 	<%= f.text_field :zip_code, class: 'input-mini' %>
 	<% if allow_attr? :user, :is_admin %>

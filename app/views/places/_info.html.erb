@@ -1,0 +1,23 @@
+<section id='place-info' class='span6'>
+  <section id='place-location'>
+    <span class='place-info-title'>Location: </span><span class='place-info-text'><%= place.location %></span>
+  </section><!-- /#place-location -->
+  <section id='place-hours'>
+    <span class='place-info-title'>Hours: </span><span class='place-info-text'><%= place.hours %></span> 
+  </section><!-- /#place-hours -->
+  <section id='place-directions'>
+    <span class='place-info-title'>Directions: </span><span class='place-info-text'><%= place.directions %></span> 
+  </section><!-- /#place-directions -->
+  <section id='place-events'>
+    <span class='place-info-title'>Events: </span>
+    <span class='place-info-text'>
+      <% place.events.each_with_index do |event, index = 0 | %>
+      <% if index == 0 %>
+      <%= link_to event.title, activity_place_event_path(place.activity,event) %>
+      <% else %>
+        , <%= link_to event.title, activity_place_event_path(place.activity,event) %>
+      <% end %>
+    <% end %>
+  </span>
+  </section>
+</section><!-- /#place-info -->

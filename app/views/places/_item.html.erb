@@ -1,0 +1,33 @@
+<% if item_counter == 0 %>
+  <section class='active item'>
+    <img class='place-default' alt="<%= place.title %> image" src="<%= item.url %>" >
+    <section class="carousel-caption">
+      <% if  item.title %>
+        <h4><%= item.title %></h4>
+      <% else %>
+        <h4><%= place.title %></h4>
+      <% end %>
+      <% if item.description %>
+        <p><%= item.description %> <small><em>- <%= item.user.username %></em></small></p>
+      <% else %>
+        <p><small><em>- <%= item.user.username %></em></small></p>
+      <% end %>
+    </section><!-- /.carousel-caption -->
+  </section><!-- /.active item -->
+<% else %>
+  <section class='item'>
+    <img class='place-default' alt="<%= place.title %> image" src="<%= item.url %>">
+    <section class="carousel-caption">
+      <% if  item.title %>
+        <h4><%= item.title %></h4>
+      <% else %>
+        <h4><%= place.title %></h4>
+      <% end %>
+      <% if item.description %>
+        <p><%= item.description %> <small><em>- <%= item.user.username %></em></small></p>
+      <% else %>
+        <p><small><em>- <%= item.user.username %></em></small></p>
+      <% end %>
+    </section><!-- /.carousel-caption -->
+  </section><!-- /.item -->
+<% end #if index == 0 %>

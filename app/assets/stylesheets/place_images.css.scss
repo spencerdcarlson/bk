@@ -1,0 +1,22 @@
+// Place all the styles related to the place_images controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.popover-flag-close{
+  margin-left: 85%;
+}
+h3.popover-title{
+  padding: 0px;
+  height: 27px;
+}
+.a-popover-content{
+  font-size: x-small;
+  margin: 0px;
+  padding: 0px;
+}
+
+.inaccurate{
+  color: orange;
+}
+.inappropriate{
+  color: red;
+}

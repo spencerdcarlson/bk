@@ -1,0 +1,26 @@
+<figure class='user-image-default-figure'>
+<img src="<%= image.url %>" class='image-thumbnail'>
+<img src="<%= image.url %>" class='image-gallery'>
+<img src="<%= image.url %>" class='image-default'>
+<figcaption class='hover-gray user-image-default-figcaption'>
+  <small>
+  <p>
+    <%= form_for [current_user, image], remote: true do |f| %>
+    <strong>Place:</strong> <%= image.place.title if image.place %><br>
+    <strong>Rating:</strong> <%= image.rating %><br>
+    
+    <strong>Url: </strong><span class='form-toggle'><%= image.url %></span>
+    <span class='form-toggle hide'><%= f.text_field :url, class: 'input-xxlarge form-toggle' %></span><br>
+    
+    <strong>Title: </strong><span class='form-toggle'><%= image.title %></span>
+    <span class='form-toggle hide'><%= f.text_field :title, class: 'input-medium' %></span><br>
+    
+    <strong>Description: </strong><span class='form-toggle'><%= image.description %></span>
+    <span class='form-toggle hide'><%= f.text_field :description, class: 'input-xlarge' %></span><br>
+    
+    <span><%= f.submit 'Update', class: 'btn form-toggle hide user-img-update-btn' %></span>
+    <% end %>
+  </p>
+</small>
+</figcation>
+</figure>

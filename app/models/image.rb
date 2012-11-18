@@ -3,5 +3,5 @@ class Image < ActiveRecord::Base
   belongs_to :place
   belongs_to :activity
   belongs_to :user
-  #belongs_to :event
+  belongs_to :event
 end

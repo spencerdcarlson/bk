@@ -1,0 +1,11 @@
+<h1>Images</h1>
+
+<h3>Activity Images</h3>
+<section id='banner-images-wrap'>
+  <%= render partial: 'banner_images', collection: @banner_images, as: :image %>
+</section>
+
+<h3>Place Images</h3>
+<section id='default-images-wrap'>
+  <%= render partial: 'default_images', collection: @default_images, as: :image %>
+</section>

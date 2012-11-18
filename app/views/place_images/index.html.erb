@@ -1,0 +1,20 @@
+<h1><%= @place.title %></h1>
+<% @images.each do |image| %>
+<figure class='place-figure'>
+<img src="<%= image.url %>" class='two-x-one-forty' >
+<figcaption class='hover-gray has-whites'>
+  Rating: <%= image.rating %>
+  <i class='icon-thumbs-up' data-image-id="<%= image.id %>"></i>
+  <i class='icon-thumbs-down' data-image-id="<%= image.id %>"></i>
+  <a href='#' class='popover-flag' rel='popover' data-placement='bottom' 
+    data-title="<a href='#' class='btn btn-link popover-flag-close'><i class='icon-remove'></i></a>" 
+    data-content="
+      <a href='#' class='btn btn-link a-popover-content inaccurate'>Inaccurate</a>
+      <a href='#' class='btn btn-link a-popover-content inappropriate'>Inappropriate</a>
+    ">
+    <i class='icon-flag' data-image-id="<%= image.id %>"></i>
+  </a>
+</figcaption>
+</figure>
+<% end %>
+

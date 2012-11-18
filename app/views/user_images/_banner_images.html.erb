@@ -1,0 +1,21 @@
+<figure class='user-image-banner-figure'>
+<img src="<%= image.url %>" class='image-banner'>
+<figcaption class='hover-gray user-image-banner-figcaption'>
+  <small>
+  <p>
+    <%= form_for [current_user, image], remote: true do |f| %>
+    <% activities_array = Activity.all.map { |activity| [activity.name, activity.id] } %>
+    <strong>Activity: </strong><span class='form-toggle'><%= image.activity.name if image.activity %></span>
+    <span class='form-toggle hide'><%= f.select(:activity_id, options_for_select(activities_array, image.activity.id), {}, class: 'input-medium') %></span><br>
+    
+    <strong>Rating: </strong><%= image.rating %><br>
+    
+    <strong>Url: </strong><span class='form-toggle'><%= image.url %></span>
+    <span class='form-toggle hide'><%= f.text_field :url, class: 'input-xxlarge' %></span><br>
+    
+    <span><%= f.submit 'Update', class: 'btn user-img-update-btn form-toggle hide' %></span>
+    <% end %>
+  </p>
+</small>
+</figcation>
+</figure>

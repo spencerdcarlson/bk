@@ -21,6 +21,7 @@ gem 'rb-fsevent', '~> 0.9.1'
 gem "omniauth-facebook", "~> 1.4.1"
 gem 'omniauth-twitter', "~> 0.0.13"
 gem "omniauth-500px", "~> 0.1.0"
+gem "powder", "~> 0.1.8"
 
 group :test do
   gem "factory_girl_rails"
@@ -33,4 +34,5 @@ end
 group :development do
   gem "letter_opener"
   gem 'guard-pow'
+  gem "railroady", "~> 1.1.0"
 end

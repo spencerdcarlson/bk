@@ -1,6 +1,26 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.clean-border {
+  border: 1px solid #eee;
+}
+.comments-title{
+  margin-left: 10px;
+}
+.comment-content{
+  padding: 10px;
+  padding-bottom: 25px;
+}
+.comment-new{
+  height: 110px;
+}
+.comments{
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+#new-comment-text-area{
+  margin-top: 10px;
+}
 #comment-user-img{
   float: left;
 }
@@ -14,20 +34,6 @@
   font-size: x-small;
   font-style: italic;
 }
-
-.clean-border {
-  border: 1px solid #eee;
-}
-
-#place-comments-title{
-  margin-left: 10px;
-}
-
-.comment-content{
-  padding: 10px;
-  padding-bottom: 25px;
-}
-
 #commnet-figure{
   float: left;
   margin: 0px;

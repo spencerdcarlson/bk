@@ -1,0 +1,10 @@
+<ul class='info-list'>
+  <li><span class='info-title'>Date: </span><span class='info-text'><%= resource.date.strftime('%b ' '%e, ' '%Y') %></span></li>
+  <li><span class='info-title'>Time: </span><span class='info-text'><%= resource.time.strftime('%l:%M %p %Z') %></span></li>
+  <li><span class='info-title'>Recurring: </span><span class='info-text'><%= resource.recurring %></span></li>
+  <li>
+    <span class='info-title'>Location: </span>
+    <span class='info-text'><%= link_to resource.place.title, activity_place_path(resource.place.activity, resource.place)  %></span>
+  </li>
+  <li><span class='info-title'>Description: </span><span class='info-text'><%= resource.description %></span></li>
+</ul>

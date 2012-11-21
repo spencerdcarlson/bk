@@ -1,56 +1,37 @@
-<section id='place-banner'><img class='banner-img' src="<%= @banner_images.first.url %>" ></section><!-- /#place-banner -->
+<section id='place-banner'>
+  <figure class='banner-figure'>
+    <figcaption>
+      <h1 class='gray'>Places</h1>
+    </figcaption>
+  <img class='banner-img' src="<%= @banner_images.first.url %>" >
+</figure>
+</section><!-- /#place-banner -->
+
 <section id='place-title' class='lead'><%= @place.title %></section><!-- /#place-title -->
-<section id='place-map' class='span5'>
-  <iframe class='thick-border' src="https://maps.google.com/maps?f=q&amp;sspn=0.023731,0.045447&amp;ll=21.661736,-158.048844&amp;spn=0.023732,0.045447&amp;output=embed">
-  </iframe>
-  <br>
-  <small>
-    <a href="https://maps.google.com/maps?f=q&amp;sspn=0.023731,0.045447&amp;ll=21.661736,-158.048844&amp;spn=0.023732,0.045447">View Larger Map</a>
-  </small>
-</section><!-- /#place-map -->
-<section id='place-thumbnails span6'>
-  <section id='place-thumnails-wrap'>
-    <%= render partial: 'thumbnail', collection: @default_images, locals: { place: @place } %>
-  </section><!-- /#place-thumnails-wrap -->
-  <section id='view-all-thumbnails'>
-    <%= link_to 'view all', activity_place_images_path(@place.activity,@place), class: '' %>
-  </section><!-- /#view-all-thumbnails -->
-</section><!-- /.place-thumbnails -->
 
-<section id="image-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <section class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel"><%= @place.title %></h3>
-  </section><!-- /.modal-header -->
-  <section class="modal-body">
-    <section id="place-carousel" class="carousel slide">
-      <section class="carousel-inner">
-        <%= render partial: 'item', collection: @default_images, locals: { place: @place } %>
-      </section><!-- /.carousel-inner -->
-        <a class="carousel-control left" href="#place-carousel" data-slide="prev">&lsaquo;</a>
-        <a class="carousel-control right" href="#place-carousel" data-slide="next">&rsaquo;</a>
-    </section><!-- /.place-carousel -->
-  </section><!-- /.modal-body -->      
-  <section class="modal-footer">
-    <button class='btn place-carousel-pause' data-toggle='button'><i class="icon-pause"></i></button>
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-  </section><!-- /.modal-footer -->
-</section><!-- /#image-modal -->
+<section class='span12' id='map-and-info'>
+  <section class='row'>
+    <section class='span5'>
+      <iframe class='thick-border' src="https://maps.google.com/maps?f=q&amp;sspn=0.023731,0.045447&amp;ll=21.661736,-158.048844&amp;spn=0.023732,0.045447&amp;output=embed"></iframe><br>
+<small><a href="https://maps.google.com/maps?f=q&amp;sspn=0.023731,0.045447&amp;ll=21.661736,-158.048844&amp;spn=0.023732,0.045447">View Larger Map</a></small>
+    </section><!-- /.span5 -->
+    <section class='span6 images-and-info'>
+      <section class='span6 thumbnails'>
+        <%= render partial: 'thumbnail', collection: @default_images, locals: { place: @place } %>
+      </section><!-- /.thumnails -->
+      <section id='view-all-thumbnails'>
+        <%= link_to 'view all', activity_place_images_path(@place.activity,@place), class: '' %>
+      </section><!-- /#view-all-thumbnails -->
+      <section class='modal'>
+        <%= render partial: 'images/modal', locals: { images: @default_images, resource: @place } %>
+      </section>
+      <section id='place-info-wrap'>
+        <%= render partial: 'info', locals: { place: @place } %>
+      </section><!-- /#info-wrap -->
+    </section><!-- /.images-and-info -->
+  </section><!--/.row -->
+</section><!--/.map-and-info -->
 
-<section id='place-info-wrap'>
-  <%= render partial: 'info', locals: { place: @place } %>
-</section><!-- /#place-info-wrap -->
-
-<section id='place-comments' class='span11 clean-border'>
-  <section id='place-comments-title' class='lead'>Comments</section><!-- /#place-comments-title -->
-  <section id='place-comments-wrap'>
-    <%= render partial: 'comments/comment', collection: @comments, as: :comment %>
-  </section><!-- /#place-comments-wrap -->
-  <section class='place-comment-new clean-border'>
-    <%= form_for [current_user, @comment], remote: true, html: { class: 'new_comment span6'} do |f| %>
-    <%= f.text_area :text, size: '100x2', class: 'span10', id: 'new-comment-text-area' %><br>
-    <%= f.hidden_field :place_id, value: @place.id %>
-    <%= f.submit 'Comment', class: 'btn' %>
-    <% end %>
-  </section><!-- /.place-comment-new -->
-</section><!-- /#place-comments -->
+<section clas'span11 clean-border comments'>
+  <%= render partial: 'comments/place_comments', locals: { comments: @comments, comment: @comment, resource: @place }  %>
+</section><!-- /.comments -->

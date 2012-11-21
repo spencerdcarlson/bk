@@ -1,3 +1,30 @@
-<section id='place-banner'><img class='banner-img' src="<%= @banner_images.first.url %>" ></section><!-- /#place-banner -->
+<section id='event-banner'>
+  <figure class='banner-figure'>
+    <figcaption>
+      <h1 class='gray'>Events</h1>
+    </figcaption>
+  <img class='banner-img' src="<%= @banner_images.first.url %>" >
+</figure>
+</section><!-- /#event-banner -->
 <section id='place-title' class='lead'><%= @event.title %></section><!-- /#place-title -->
+<section class='span12' id='map-and-info'>
+  <section class='row'>
+  <section class='span5'>
+    <iframe class='thick-border' width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Pupukea,+HI&amp;aq=0&amp;oq=pupuk&amp;sll=20.46,-157.505&amp;sspn=6.121867,11.634521&amp;ie=UTF8&amp;hq=&amp;hnear=Pupukea,+Honolulu,+Hawaii&amp;ll=21.663419,-158.052181&amp;spn=0.047462,0.090895&amp;t=m&amp;z=14&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Pupukea,+HI&amp;aq=0&amp;oq=pupuk&amp;sll=20.46,-157.505&amp;sspn=6.121867,11.634521&amp;ie=UTF8&amp;hq=&amp;hnear=Pupukea,+Honolulu,+Hawaii&amp;ll=21.663419,-158.052181&amp;spn=0.047462,0.090895&amp;t=m&amp;z=14" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+  </section><!-- /.span5 -->
+  <section class='span6 images-and-info'>
+    <section class='span6 thumbnails'>
+      <%= render partial: 'places/thumbnail', collection: @default_images, locals: { place: @event.place } %>
+    </section>
+    <section class='info'>
+      <%= render partial: 'info', locals: { resource: @event }%>
+    </section><!-- /.info -->
+  </section><!-- /.images-and-info -->
+</section><!--/.row -->
+</section><!--/.map-and-info -->
+
+<section clas'span11 clean-border comments'>
+  <%= render partial: 'comments/event_comments', locals: { comments: @comments, comment: @comment, resource: @event }  %>
+</section><!-- /.comments -->
+
 

@@ -22,6 +22,10 @@ gem "omniauth-facebook", "~> 1.4.1"
 gem 'omniauth-twitter', "~> 0.0.13"
 gem "omniauth-500px", "~> 0.1.0"
 gem "powder", "~> 0.1.8"
+gem "omniauth-google-oauth2", "~> 0.1.13"
+gem "carrierwave", "~> 0.7.1"
+gem "rmagick", "~> 2.13.1"
+
 
 group :test do
   gem "factory_girl_rails"

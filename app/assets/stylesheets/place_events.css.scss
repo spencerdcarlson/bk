@@ -1,3 +1,17 @@
 // Place all the styles related to the place_events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.info-title{
+  font-weight: bold;
+}
+.info-text{
+  font-size: x-small;
+}
+.info-list{
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+.banner-figure{
+  background-color: #333;
+}

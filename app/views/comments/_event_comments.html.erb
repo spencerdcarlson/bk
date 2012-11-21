@@ -1,0 +1,11 @@
+<section class='lead comments-title'>Comments</section><!-- /.comments-title -->
+<section class='comments-wrap'>
+  <%= render partial: 'comments/comment', collection: comments, as: :comment %>
+</section><!-- /.comments-wrap -->
+<section class='comment-new clean-border'>
+  <%= form_for [current_user, comment], remote: true, html: { class: 'new_comment span6'} do |f| %>
+  <%= f.text_area :text, size: '100x2', class: 'span10', id: 'new-comment-text-area' %><br>
+  <%= f.hidden_field :event_id, value: resource.id %>
+  <%= f.submit 'Comment', class: 'btn' %>
+  <% end %>
+</section><!-- /.comment-new -->

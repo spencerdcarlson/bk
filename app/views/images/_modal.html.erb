@@ -1,0 +1,19 @@
+<section id="image-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <section class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel"><%= @place.title %></h3>
+  </section><!-- /.modal-header -->
+  <section class="modal-body">
+    <section id="place-carousel" class="carousel slide">
+      <section class="carousel-inner">
+        <%= render partial: 'images/item', collection: images, locals: { place: resource } %>
+      </section><!-- /.carousel-inner -->
+        <a class="carousel-control left" href="#place-carousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#place-carousel" data-slide="next">&rsaquo;</a>
+    </section><!-- /.place-carousel -->
+  </section><!-- /.modal-body -->      
+  <section class="modal-footer">
+    <button class='btn place-carousel-pause' data-toggle='button'><i class="icon-pause"></i></button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </section><!-- /.modal-footer -->
+</section><!-- /#image-modal -->

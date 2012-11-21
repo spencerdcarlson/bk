@@ -1,6 +1,8 @@
 Bk::Application.routes.draw do
 
 
+  get "event_comments/create"
+
   get "place_events/show"
 
   get "place_images/index"

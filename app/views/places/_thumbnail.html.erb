@@ -1,5 +1,5 @@
 <% if thumbnail_counter < 5 %>
   <a class='image-modal-link' href="#image-modal" role="button" data-toggle="modal" data-image-frame="<%= thumbnail_counter %>">
-    <img class='place-thumbnail img-rounded hover-gray' alt="<%= thumbnail.title  %> at <%= place.title %>" src="<%= thumbnail.url %>">
+    <%= image_tag thumbnail.image_url(:thumb), class: 'place-thumbnail img-rounded hover-gray' if thumbnail.image? %>
   </a>
 <% end %>

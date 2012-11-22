@@ -1,22 +1,27 @@
 <figure class='user-image-default-figure'>
-<img src="<%= image.url %>" class='image-thumbnail'>
-<img src="<%= image.url %>" class='image-gallery'>
-<img src="<%= image.url %>" class='image-default'>
-<figcaption class='hover-gray user-image-default-figcaption'>
+  <figcaption>
+    <%= link_to 'Delete', user_image_path(current_user,image), method: 'delete', remote: true, confirm: 'Are you sure?' %>
+  </figcaption>
+  <% if image.image? %>
+    <%= image_tag image.image_url(:thumb), class: 'image-thumbnail' %>
+    <%= image_tag image.image_url(:gallery), class: 'image-gallery' %>
+    <%= image_tag image.image_url(:default), class: 'image-default'%>
+  <% end %>
+<figcaption class='hover-gray toggle-update-form'>
+  <section class='pull-right form-toggle hide'><i class='icon-remove toggle-remove close-figcap' ></i></section>
   <small>
   <p>
     <%= form_for [current_user, image], remote: true do |f| %>
     <strong>Place:</strong> <%= image.place.title if image.place %><br>
+    <strong>Event:</strong> <%= image.event.title if image.event %><br>
     <strong>Rating:</strong> <%= image.rating %><br>
-    
-    <strong>Url: </strong><span class='form-toggle'><%= image.url %></span>
-    <span class='form-toggle hide'><%= f.text_field :url, class: 'input-xxlarge form-toggle' %></span><br>
-    
+        
     <strong>Title: </strong><span class='form-toggle'><%= image.title %></span>
     <span class='form-toggle hide'><%= f.text_field :title, class: 'input-medium' %></span><br>
     
     <strong>Description: </strong><span class='form-toggle'><%= image.description %></span>
     <span class='form-toggle hide'><%= f.text_field :description, class: 'input-xlarge' %></span><br>
+    <span class='form-toggle hide'><strong>Url: </strong><%= root_url %><%= image.image %></span><br>
     
     <span><%= f.submit 'Update', class: 'btn form-toggle hide user-img-update-btn' %></span>
     <% end %>

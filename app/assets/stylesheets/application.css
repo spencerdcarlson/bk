@@ -11,6 +11,9 @@
  *= require_self
  *= require_tree .
  */
+ .clear-both{
+   clear: both;
+ }
  .show {
 	 display: inline;
  }

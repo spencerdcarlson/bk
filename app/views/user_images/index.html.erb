@@ -5,7 +5,25 @@
   <%= render partial: 'banner_images', collection: @banner_images, as: :image %>
 </section>
 
-<h3>Place Images</h3>
+<h3 class='clear-both'>Place Images</h3>
 <section id='default-images-wrap'>
   <%= render partial: 'default_images', collection: @default_images, as: :image %>
+  <section class='new-user-image'>
+    <% activities_array = Activity.all.map { |activity| [activity.name, activity.id] } %>
+    <% places_array = Place.all.map { |place| [place.title, place.id] } %>
+    <% events_array = Event.all.map { |event| [event.title, event.id] }%>
+    <% image_types_array = ['default','banner'] %>
+    <!-- edit url needs to got to  -->
+    <%= form_for [current_user, @image], remote: true, html: { multipart: true } do |f| %>
+    <%= f.file_field :image %>
+      <%= f.text_field :remote_image_url, class: 'input-x-large', placeholder: 'URL' %>
+      <%= f.select(:activity_id, options_for_select(activities_array), { include_blank: true }, class: 'input-medium image-activity') %>
+      <%= f.select(:place_id, options_for_select(places_array), { include_blank: true }, class: 'input-medium image-activity') %>
+      <%= f.select(:event_id, options_for_select(events_array), { include_blank: true }, class: 'input-medium image-activity') %>
+      <%= f.select(:image_type, options_for_select(image_types_array), { include_blank: true }, class: 'input-medium image-activity') %>
+      <%= f.text_field :title, class: 'input-medium', placeholder: 'Title'  %>
+      <%= f.text_area :description, size: '100x2', placeholder: 'Description' %>
+      <%= f.submit 'Upload', class: 'btn' %>
+    <% end %>
+  </section>
 </section>

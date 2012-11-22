@@ -3,8 +3,8 @@
     <figcaption>
       <h1 class='gray'>Places</h1>
     </figcaption>
-  <img class='banner-img' src="<%= @banner_images.first.url %>" >
-</figure>
+    <%= image_tag @banner_images.first.image_url(:banner), class: 'banner-img' if @banner_images.first.image? %>
+  </figure>
 </section><!-- /#place-banner -->
 
 <section id='place-title' class='lead'><%= @place.title %></section><!-- /#place-title -->

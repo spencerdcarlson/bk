@@ -1,20 +1,28 @@
-<figure class='user-image-banner-figure'>
-<img src="<%= image.url %>" class='image-banner'>
-<figcaption class='hover-gray user-image-banner-figcaption'>
+<figure class='user-image-banner-figure'>  
+<%= image_tag image.image_url(:banner), class: 'image-banner' if image.image? %>
+<figcaption class='hover-gray toggle-update-form'>
+  <section class='pull-right form-toggle hide'><i class='icon-remove toggle-remove close-figcap' ></i></section>
   <small>
   <p>
     <%= form_for [current_user, image], remote: true do |f| %>
     <% activities_array = Activity.all.map { |activity| [activity.name, activity.id] } %>
     <strong>Activity: </strong><span class='form-toggle'><%= image.activity.name if image.activity %></span>
-    <span class='form-toggle hide'><%= f.select(:activity_id, options_for_select(activities_array, image.activity.id), {}, class: 'input-medium') %></span><br>
+    <span class='form-toggle hide'><%= f.select(:activity_id, options_for_select(activities_array, image.activity.id), {}, class: 'input-medium image-activity') %></span><br>
     
     <strong>Rating: </strong><%= image.rating %><br>
+    <strong>Title: </strong><span class='form-toggle'><%= image.title %></span>
+    <span class='form-toggle hide'><%= f.text_field :title, class: 'input-medium' %></span><br>
     
-    <strong>Url: </strong><span class='form-toggle'><%= image.url %></span>
-    <span class='form-toggle hide'><%= f.text_field :url, class: 'input-xxlarge' %></span><br>
+    <strong>Description: </strong><span class='form-toggle'><%= image.description %></span>
+    <span class='form-toggle hide'><%= f.text_field :description, class: 'input-xlarge' %></span><br>
     
-    <span><%= f.submit 'Update', class: 'btn user-img-update-btn form-toggle hide' %></span>
+    <span class='form-toggle hide'><strong>Url: </strong><%= image.image %></span><br>
+    <section class='float-left'>
+      <%= f.submit 'Update', class: 'btn user-img-update-btn form-toggle hide float-left' %>
+      <%= link_to 'Delete', user_image_path(current_user,image), class: 'pull-right btn btn-danger form-toggle hide', method: 'delete', remote: true, confirm: 'Are you sure?' %>
+  </section>
     <% end %>
+    
   </p>
 </small>
 </figcation>

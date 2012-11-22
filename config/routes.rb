@@ -1,17 +1,7 @@
 Bk::Application.routes.draw do
 
 
-  get "event_comments/create"
-
-  get "place_events/show"
-
-  get "place_images/index"
-
-  get "user_images/index"
-
-  get "user_images/update"
-
-  get "images/index"
+  get "event_images/index"
 
   # put 'password/update' => 'password_resets#update'
   # get 'password/reset/confirm' => 'password_resets#edit'
@@ -27,9 +17,14 @@ Bk::Application.routes.draw do
   get 'edit' => 'users#edit'
   get 'activities' => 'activities#index'
   match '/activities/:activity_id/places/:place_id/images(.:format)', to: 'place_images#index'
-  match '/users/:user_id/images(.:format)', to: 'user_images#index'
-  match '/users/:user_id/images/:id(.:format)', to: 'user_images#update'
+  get '/users/:user_id/images(.:format)', to: 'user_images#index'
+  get '/users/:user_id/images/:id(.:format)', to: 'user_images#update'
   match '/activities/:activity_id/places/:place_id/events/:id(.:format)', to: 'place_events#show'
+  
+  post '/users/:user_id/images(.:format)' => 'user_images#create', as: :new_user_image
+  delete '/users/:user_id/images/:id(.:format)' => 'user_images#destroy'
+  
+  get '/activities/:activity_id/places/:place_id/events/:id/images(.:format)', to: 'event_images#index'
 
   
   resources :sessions

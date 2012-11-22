@@ -3,7 +3,7 @@
     <figcaption>
       <h1 class='gray'>Events</h1>
     </figcaption>
-  <img class='banner-img' src="<%= @banner_images.first.url %>" >
+  <%= image_tag @banner_images.first.image_url(:banner), class: 'banner-img' if @banner_images.first.image? %>
 </figure>
 </section><!-- /#event-banner -->
 <section id='place-title' class='lead'><%= @event.title %></section><!-- /#place-title -->
@@ -16,6 +16,10 @@
     <section class='span6 thumbnails'>
       <%= render partial: 'places/thumbnail', collection: @default_images, locals: { place: @event.place } %>
     </section>
+    <section id='view-all-thumbnails'>
+      <%= link_to 'view all', activity_place_event_images_path(@event.place.activity,@event.place,@event), class: '' %>
+    </section><!-- /#view-all-thumbnails -->
+    
     <section class='info'>
       <%= render partial: 'info', locals: { resource: @event }%>
     </section><!-- /.info -->

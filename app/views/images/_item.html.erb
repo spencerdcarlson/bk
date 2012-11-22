@@ -1,6 +1,6 @@
 <% if item_counter == 0 %>
   <section class='active item'>
-    <img class='place-default' alt="<%= place.title %> image" src="<%= item.url %>" >
+    <%= image_tag item.image_url(:default), class: 'place-default' if item.image? %>
     <section class="carousel-caption">
       <% if  item.title %>
         <h4><%= item.title %></h4>
@@ -16,7 +16,7 @@
   </section><!-- /.active item -->
 <% else %>
   <section class='item'>
-    <img class='place-default' alt="<%= place.title %> image" src="<%= item.url %>">
+    <%= image_tag item.image_url(:default), class: 'place-default' if item.image? %>
     <section class="carousel-caption">
       <% if  item.title %>
         <h4><%= item.title %></h4>

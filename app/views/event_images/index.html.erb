@@ -1,0 +1,41 @@
+<h1><%= @event.title %></h1>
+<% if @images %>
+<% @images.each do |image| %>
+<figure class='place-figure'>
+  <img src="<%= image.image %>" class='two-x-one-forty' >
+<figcaption class='hover-gray has-whites'>
+  Rating: <%= image.rating %>
+  <i class='icon-thumbs-up' data-image-id="<%= image.id %>"></i>
+  <i class='icon-thumbs-down' data-image-id="<%= image.id %>"></i>
+  <a href='#' class='popover-flag' rel='popover' data-placement='bottom' 
+    data-title="<a href='#' class='btn btn-link popover-flag-close'><i class='icon-remove'></i></a>" 
+    data-content="
+      <a href='#' class='btn btn-link a-popover-content inaccurate'>Inaccurate</a>
+      <a href='#' class='btn btn-link a-popover-content inappropriate'>Inappropriate</a>
+    ">
+    <i class='icon-flag' data-image-id="<%= image.id %>"></i>
+  </a>
+</figcaption>
+</figure>
+<% end %>
+<% end %>
+<section class='new-event-image clear-both'>
+<% activities_array = Activity.all.map { |activity| [activity.name, activity.id] } %>
+<% places_array = Place.all.map { |place| [place.title, place.id] } %>
+<% events_array = Event.all.map { |event| [event.title, event.id] }%>
+<% image_types_array = ['default','banner'] %>
+<!-- edit url needs to got to  -->
+<%= form_for [current_user, @image], remote: true, html: { multipart: true } do |f| %>
+  <%= f.file_field :image %>
+  or
+  <%= f.text_field :remote_image_url, class: 'input-xxlarge', placeholder: 'URL' %>
+  <%= f.select(:activity_id, options_for_select(activities_array, @event.place.activity.id), { include_blank: true }, class: 'input-medium image-activity hide') %>
+  <%= f.select(:place_id, options_for_select(places_array, @event.place.id), { include_blank: true }, class: 'input-medium image-activity hide') %>
+  <%= f.select(:event_id, options_for_select(events_array, @event.id), { include_blank: true }, class: 'input-medium image-activity hide') %>
+  <%= f.select(:image_type, options_for_select(image_types_array, 'default'), { include_blank: true }, class: 'input-medium image-activity hide') %>
+  <%= f.text_field :title, class: 'input-medium', placeholder: 'Title'  %>
+  <%= f.text_area :description, size: '100x2', placeholder: 'Description' %>
+  <%= f.submit 'Upload', class: 'btn' %>
+<% end %>
+</section>
+

@@ -1,7 +1,7 @@
 <h1><%= @place.title %></h1>
 <% @images.each do |image| %>
 <figure class='place-figure'>
-<img src="<%= image.url %>" class='two-x-one-forty' >
+  <img src="<%= image.image if image.image? %>" class='two-x-one-forty' >
 <figcaption class='hover-gray has-whites'>
   Rating: <%= image.rating %>
   <i class='icon-thumbs-up' data-image-id="<%= image.id %>"></i>
@@ -17,4 +17,20 @@
 </figcaption>
 </figure>
 <% end %>
+<section class='add-place-image'>
+  <% activities_array = Activity.all.map { |activity| [activity.name, activity.id] } %>
+  <% places_array = Place.all.map { |place| [place.title, place.id] } %>
+  <% image_types_array = ['default','banner'] %>
+  <!-- edit url needs to got to  -->
+  <%= form_for [current_user, @image], remote: true, html: { multipart: true } do |f| %>
+    <%= f.file_field :image %>
+    <%= f.text_field :remote_image_url, class: 'input-x-large', placeholder: 'URL' %>
+    <%= f.select(:activity_id, options_for_select(activities_array,@place.activity.id), { include_blank: true },  class: 'input-medium image-activity hide') %>
+    <%= f.select(:place_id, options_for_select(places_array,@place.id), { include_blank: true }, class: 'input-medium image-activity hide') %>
+    <%= f.select(:image_type, options_for_select(image_types_array, 'default'), { include_blank: true }, class: 'input-medium image-activity hide') %>
+    <%= f.text_field :title, class: 'input-medium', placeholder: 'Title'  %>
+    <%= f.text_area :description, size: '100x2', placeholder: 'Description' %>
+    <%= f.submit 'Upload', class: 'btn' %>
+  <% end %>
+</section>
 
